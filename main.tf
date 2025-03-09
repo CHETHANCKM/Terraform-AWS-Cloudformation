@@ -19,7 +19,7 @@ data "aws_caller_identity" "current" {}
 
 # Replace Account ID in template.json dynamically
 resource "aws_cloudformation_stack" "FileTransfer" {
-  name          = "FileTransfer_Cloudformation_stack"
+  name          = "FileTransfer-CloudformationStack"
   template_body = templatefile("template.json", { account_id = data.aws_caller_identity.current.account_id })
 
   capabilities = ["CAPABILITY_NAMED_IAM"]
