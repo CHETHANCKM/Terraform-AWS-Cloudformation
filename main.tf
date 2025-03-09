@@ -5,7 +5,6 @@ terraform {
       version = "~> 4.16"
     }
   }
-
   required_version = ">= 1.2.0"
 }
 
@@ -19,10 +18,9 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 
 # Replace Account ID in template.json dynamically
-resource "aws_cloudformation_stack" "ec2_stack" {
-  name          = "FileTransfer"
+resource "aws_cloudformation_stack" "FileTransfer" {
+  name          = "FileTransfer_Cloudformation_stack"
   template_body = templatefile("template.json", { account_id = data.aws_caller_identity.current.account_id })
 
   capabilities = ["CAPABILITY_NAMED_IAM"]
-
 }
