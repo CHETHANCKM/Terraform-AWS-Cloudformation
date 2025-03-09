@@ -8,7 +8,7 @@
         "IAMRole00testfunctions3objectrole00Cz01H": {
             "UpdateReplacePolicy": "Retain",
             "Type": "AWS::IAM::Role",
-            "DeletionPolicy": "Retain",
+            "DeletionPolicy": "Delete",
             "Properties": {
                 "Path": "/service-role/",
                 "ManagedPolicyArns": [
