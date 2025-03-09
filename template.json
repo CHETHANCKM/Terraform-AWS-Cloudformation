@@ -1,0 +1,35 @@
+{
+    "Metadata": {
+        "AWSToolsMetrics": {
+            "IaC_Generator": "arn:aws:cloudformation:us-east-1:${account_id}:generatedTemplate/0073e701-a37c-4c68-b55e-671e35a92694"
+        }
+    },
+    "Resources": {
+        "test-function-s3-objectrole_terraform": {
+            "UpdateReplacePolicy": "Retain",
+            "Type": "AWS::IAM::Role",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "Path": "/service-role/",
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::${account_id}:policy/service-role/AWSLambdaS3ExecutionRole-f345dccf-30bf-435e-a8bd-2d4ac208efa5",
+                    "arn:aws:iam::${account_id}:policy/service-role/AWSLambdaBasicExecutionRole-c1bfd531-2359-4d46-922a-166511c4cca9"
+                ],
+                "MaxSessionDuration": 3600,
+                "RoleName": "test-function-s3-objectrole_terraform",
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
