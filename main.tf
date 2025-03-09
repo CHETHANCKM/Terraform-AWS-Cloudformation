@@ -23,4 +23,6 @@ resource "aws_cloudformation_stack" "ec2_stack" {
   name          = "FileTransfer"
   template_body = templatefile("template.json", { account_id = data.aws_caller_identity.current.account_id })
 
+  capabilities = ["CAPABILITY_NAMED_IAM"]
+
 }
